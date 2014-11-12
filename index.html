@@ -32,6 +32,20 @@
       bottom: 10px;
       color: white;
     }
+	.icon-btn {
+    background-color: #ED5505 !important;
+    box-shadow: 0 0 5px #ddd !important;
+    color: #FFF !important;
+    cursor: pointer;
+    display: block !important;
+    font-size: 1x;
+    margin: 10px 0;
+    padding: 16px 0px;
+    position: relative;
+    text-align: center;
+    transition: all 0.3s ease 0s !important;
+    
+}
   .mylink {background-color: #ED5505; color:#FFF; } 
   
   .mylink:hover { background-color: #00285F; color:#FFF; } 
@@ -49,17 +63,22 @@
        <img style="width:80%; max-width:293px;" src="images/logo.png">
     </div>
       <br>
-
-      <ons-list>
-        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="truck" size="1x"></ons-icon>  Our Fleet</ons-list-item>
-        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"> <ons-icon icon="map-marker" size="1x"></ons-icon> Our Locations</ons-list-item>
-        <ons-list-item class="mylink" ng-click="navi.pushPage('offers.html')" modifier="chevron"><ons-icon icon="gift" size="1x"></ons-icon> Special Offers</ons-list-item>
-        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="book" size="1x"></ons-icon> Mobile Booking</ons-list-item>
-        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="credit-card" size="1x"></ons-icon> Gateway Program</ons-list-item>
-        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="bullhorn" size="1x"></ons-icon> News and Events</ons-list-item>
-        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="envelope" size="1x"></ons-icon> Lease Enquiry</ons-list-item>
-        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="phone" size="1x"></ons-icon> Contact Us</ons-list-item>
-      </ons-list>
+      <ons-row>
+        <ons-col class="icon-btn" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="truck" size="2x"></ons-icon><div>Our Fleet</div> </ons-col>  
+        <ons-col class="icon-btn" ng-click="navi.pushPage('example1.html')" modifier="chevron">  <ons-icon icon="map-marker" size="2x"></ons-icon><div> Our Locations</div> </ons-col>
+      </ons-row>   
+      <ons-row> 
+        <ons-col class="icon-btn" ng-click="navi.pushPage('offers.html')" modifier="chevron"><ons-icon icon="gift" size="2x"></ons-icon> <div>Special Offers</div></ons-col>  
+        <ons-col class="icon-btn" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="credit-card" size="2x"></ons-icon><div> Gateway Program</div></ons-col>
+      </ons-row>   
+      <ons-row>   
+        <ons-col  class="icon-btn" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="bullhorn" size="2x"></ons-icon> <div>News and Events</div></ons-col>  
+        <ons-col  class="icon-btn" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="envelope" size="2x"></ons-icon> <div>Lease Enquiry</div></ons-col>
+      </ons-row>   
+      <ons-row>    
+        <ons-col  class="mylink icon-btn" ng-click="navi.pushPage('example1.html')" modifier="chevron"> <ons-icon icon="phone" size="2x"></ons-icon><div >Contact Us</div> </ons-col>
+      </ons-row> 
+     
       <ons-bottom-toolbar>
       
       <ons-toolbar-button style="float:left; " ng-click="carousel.prev()">Privacy Policy</ons-toolbar-button>
