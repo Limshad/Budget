@@ -43,15 +43,12 @@
   <ons-navigator var="inner">
 
     <ons-page>
-           
-      <div style="text-align: center;margin-top:20px;">
-       <img style="width:80%;" src="images/logo.png">
-    </div>
-      <br>
-    <ons-toolbar>
-        <div class="left"><ons-back-button ng-click="inner.pushPage('index.html')" modifier="chevron">Back</ons-back-button></div>
-        <div class="center">New Page</div>
-      </ons-toolbar>
+ 
+ 
+       <ons-row>
+        <ons-col class="left"><img style="width:100%; margin-top:20px;" src="images/logo.png"></ons-col>
+        <ons-col><div  style="float:right; margin-top:15px;"><ons-toolbar-button style="background-color: #ED5505;  padding-top:4px; padding-bottom:4px; cursor:pointer;"   ng-click="inner.pushPage('index.html')"><span style="color:#FFF;"><ons-icon icon="home" size="1x"></ons-icon>  Home </span></ons-toolbar-button></div></ons-col>
+      </ons-row>
      </ons-page>
 </ons-navigator>
 </body>
