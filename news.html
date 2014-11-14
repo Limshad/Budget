@@ -36,6 +36,22 @@
   .mylink {background-color: #ED5505; color:#FFF; } 
   
   .mylink:hover { background-color: #00285F; color:#FFF; } 
+  	.news_container {
+    box-shadow: 0 0 5px #ddd !important;
+    color: #00285F !important;
+    cursor: pointer;
+    display: block !important;
+    font-size: 1x;
+    margin: 10px 0;
+    padding: 4px 4px;
+    position: relative;
+    text-align: left;
+    transition: all 0.3s ease 0s !important;
+	}
+	.news_date
+	{
+		 font-size: 10px;
+	}
   </style>
   
 <script>  
@@ -65,8 +81,23 @@
       'swipeup swipedown tap doubletap touch transform pinch pinchin pinchout rotate';
 
     $(document).on(eventName, '#hoge', function(event) {
-      if (event.type === 'dragdown') {
-        alert(event.type);
+      if (event.type === 'swipedown') {
+         $('.loading').fadeIn('slow');
+	  var parameters = location.search.substring(1).split("?");
+
+    var temp = parameters[0].split("=");
+	  alert(unescape(temp[1]));
+	 var id=0; 
+    $.post("http://dev.1callgroup.com/budgetmobile/news.php", {
+                id: id,
+            },
+            function(data) {
+				alert(data);
+			var content = $("#my-content");	
+		    content.html(data);
+		    ons.compile(content[0]);
+			$('.loading').fadeOut('slow');
+            });
       }
     });
 
@@ -85,7 +116,7 @@
         <div style="text-align: center; background:#00285F; color:#FFF; padding-top:4px; padding-bottom:4px;">
          <ons-icon icon="gift" size="2x"></ons-icon> <span id="report-header">Special Offers</span>
       </div>
-    <div class="loading"></div> 
+    <div class="loading"><ons-icon icon="spinner" spin="true"></ons-icon></div> 
       <span id="my-content"></span> 
       </div>
     </ons-gesture-detector>
