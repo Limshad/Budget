@@ -5,25 +5,13 @@
   <title>Carousel</title>  
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet" href="css/build/onsenui.css">
+  <link rel="stylesheet" href="css/custom.css">
   <link rel="stylesheet" href="css/build/onsen-css-components.css">
-
   <script src="js/angular/angular.js"></script>    
   <script src="js/onsenui.js"></script>    
   <script src="js/app.js"></script>  
   <script src="js/jquery-1.7.1.min.js"></script>
-  <script>
  
-   $(document).ready(function(e) {
-    $.post("http://dev.1callgroup.com/kiosk/mylike/index.php", {
-					email: email, name: name,email_sel: email_sel,
-				},function(data) {
-				   var response = JSON.parse(data); 
-				   
-				   
-				   });
-  });
-
-  </script>
   <style>
     ons-carousel-item {
       display: table;
@@ -50,12 +38,46 @@
   .mylink:hover { background-color: #00285F; color:#FFF; } 
   </style>
   
-</head>
+<script>  
+  ons.bootstrap();
+  ons.ready(function() {
+	  alert('sdsd');
+	  $('.loading').fadeIn('slow');
+	  var parameters = location.search.substring(1).split("?");
 
-<body  >    
+    var temp = parameters[0].split("=");
+	  alert(unescape(temp[1]));
+	 var id=0; 
+    $.post("http://dev.1callgroup.com/budgetmobile/news.php", {
+                id: id,
+            },
+            function(data) {
+				alert(data);
+			var content = $("#my-content");	
+		    content.html(data);
+		    ons.compile(content[0]);
+			$('.loading').fadeOut('slow');
+            });
+  });
+
+    var eventName = 
+      'drag dragleft dragright dragup dragdown hold release swipe swipeleft swiperight ' +
+      'swipeup swipedown tap doubletap touch transform pinch pinchin pinchout rotate';
+
+    $(document).on(eventName, '#hoge', function(event) {
+      if (event.type === 'dragdown') {
+        alert(event.type);
+      }
+    });
+
+</script>  
+<body> 
+
   <ons-navigator var="offers">
 
     <ons-page>
+    <ons-gesture-detector>
+   <div id="hoge">
        <ons-row>
         <ons-col class="left"><img style="width:100%; margin-top:20px;" src="images/logo.png"></ons-col>
         <ons-col><div  style="float:right; margin-top:15px;"><ons-toolbar-button style="background-color: #ED5505;  padding-top:4px; padding-bottom:4px; cursor:pointer;"   ng-click="offers.pushPage('index.html')"><span style="color:#FFF;"><ons-icon icon="home" size="1x"></ons-icon>  Home </span></ons-toolbar-button></div></ons-col>
@@ -63,21 +85,12 @@
         <div style="text-align: center; background:#00285F; color:#FFF; padding-top:4px; padding-bottom:4px;">
          <ons-icon icon="gift" size="2x"></ons-icon> <span id="report-header">Special Offers</span>
       </div>
-       <ons-carousel overscrollable auto-scroll direction="vertical" style="height: 100%; width: 100%">
-      <ons-carousel-item style="background-color: gray; color:#Fff;">
-        <div class="item-label">Offer 1</div>
-      </ons-carousel-item>
-      <ons-carousel-item style="background-color: #085078; color:#Fff;">
-        <div class="item-label">Offer 2</div>
-      </ons-carousel-item>
-      <ons-carousel-item style="background-color: #373B44; color:#Fff;">
-        <div class="item-label">Offer 3</div>
-      </ons-carousel-item>
-      <ons-carousel-item style="background-color: #D38312; color:#Fff;">
-        <div class="item-label">Offer 4</div>
-      </ons-carousel-item>
-    </ons-carousel>
+    <div class="loading"></div> 
+      <span id="my-content"></span> 
+      </div>
+    </ons-gesture-detector>
      </ons-page>
 </ons-navigator>
 </body>
+
 </html>

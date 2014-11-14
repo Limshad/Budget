@@ -6,11 +6,24 @@
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet" href="css/build/onsenui.css">
   <link rel="stylesheet" href="css/build/onsen-css-components.css">
+  
 
   <script src="js/angular/angular.js"></script>    
   <script src="js/onsenui.js"></script>    
   <script src="js/app.js"></script>  
+  <script src="js/jquery-1.7.1.min.js"></script>
+   <script>
+   var Budget = angular.module('myApp', ['onsen.directives']);
 
+   Budget.controller("indexController", function($scope) {
+
+    $scope.foo = function(){       
+        alert("foo!");
+		$(location).attr('href',"news.html?news=1");;
+    }
+
+});
+   </script>
   <style>
     ons-carousel-item {
       display: table;
@@ -54,9 +67,9 @@
 </head>
 
 <body>    
-  <ons-navigator var="navi">
+  <ons-navigator var="navi" >
 
-    <ons-page>
+    <ons-page ng-controller="indexController">
        
     
       <div style="text-align: center;margin-top:20px;">
@@ -64,15 +77,15 @@
     </div>
       <br>
       <ons-row>
-        <ons-col class="icon-btn" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="truck" size="2x"></ons-icon><div>Our Fleet</div> </ons-col>  
+       <ons-col class="icon-btn"  ng-click="foo()"><ons-icon icon="truck" size="2x"></ons-icon><div>Our Fleet</div> </ons-col>  
         <ons-col class="icon-btn" ng-click="navi.pushPage('example1.html')" modifier="chevron">  <ons-icon icon="map-marker" size="2x"></ons-icon><div> Our Locations</div> </ons-col>
       </ons-row>   
       <ons-row> 
-        <ons-col class="icon-btn" ng-click="navi.pushPage('offers.html')" modifier="chevron"><ons-icon icon="gift" size="2x"></ons-icon> <div>Special Offers</div></ons-col>  
+        <ons-col class="icon-btn" ng-click="navi.pushPage('news1.html')" modifier="chevron"><ons-icon icon="gift" size="2x"></ons-icon> <div>Special Offers</div></ons-col>  
         <ons-col class="icon-btn" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="credit-card" size="2x"></ons-icon><div> Gateway Program</div></ons-col>
       </ons-row>   
       <ons-row>   
-        <ons-col  class="icon-btn" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="bullhorn" size="2x"></ons-icon> <div>News and Events</div></ons-col>  
+        <ons-col  class="icon-btn" ng-click="navi.pushPage('news.html')" modifier="chevron"><ons-icon icon="bullhorn" size="2x"></ons-icon> <div>News and Events</div></ons-col>  
         <ons-col  class="icon-btn" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="envelope" size="2x"></ons-icon> <div>Lease Enquiry</div></ons-col>
       </ons-row>   
       <ons-row>    

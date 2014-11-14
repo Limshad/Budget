@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+ font-family: 'HelveticaRegular';
+ src: url('../font/helvetica-webfont.eot');
+ src: url('../font/helvetica-webfont.eot?#iefix') format('embedded-opentype'),  url('../font/helvetica-webfont.woff') format('woff'),  url('../font/helvetica-webfont.ttf') format('truetype'),  url('../font/helvetica-webfont.svg#HelveticaRegular') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+div.loading {
+    background: url("../images/loading.gif") no-repeat scroll center center transparent;
+    display: none;
+    font: 16px Tahoma,Geneva,sans-serif;
+    height: 100px;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+    overflow: auto;
+    padding: 10px;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    width: 100px;
+    z-index: 2;
+}
