@@ -34,10 +34,11 @@
       color: white;
     }
   .mylink {background-color: #ED5505; color:#FFF; } 
-  
   .mylink:hover { background-color: #00285F; color:#FFF; } 
+  .myicon {color: #ED5505;  } 
+  .myicon:hover { color: #00285F; } 
   	.news_container {
-    box-shadow: 0 0 5px #ddd !important;
+    border: 1px #ccc solid !important;
     color: #00285F !important;
     cursor: pointer;
     display: block !important;
@@ -46,33 +47,35 @@
     padding: 4px 4px;
     position: relative;
     text-align: left;
-    transition: all 0.3s ease 0s !important;
+	
+    
+	
 	}
 	.news_date
 	{
-		 font-size: 10px;
+		 font-size: 10px; 
+		 position: absolute; bottom: 1px;
 	}
   </style>
   
 <script>  
   ons.bootstrap();
   ons.ready(function() {
-	  alert('sdsd');
-	  $('.loading').fadeIn('slow');
+	  $('.loading_up').fadeIn('slow');
 	  var parameters = location.search.substring(1).split("?");
 
     var temp = parameters[0].split("=");
-	  alert(unescape(temp[1]));
+	 // alert(unescape(temp[1]));
 	 var id=0; 
     $.post("http://dev.1callgroup.com/budgetmobile/news.php", {
                 id: id,
             },
             function(data) {
-				alert(data);
+				//alert(data);
 			var content = $("#my-content");	
 		    content.html(data);
 		    ons.compile(content[0]);
-			$('.loading').fadeOut('slow');
+			$('.loading_up').fadeOut('slow');
             });
   });
 
@@ -82,46 +85,83 @@
 
     $(document).on(eventName, '#hoge', function(event) {
       if (event.type === 'swipedown') {
-         $('.loading').fadeIn('slow');
-	  var parameters = location.search.substring(1).split("?");
-
-    var temp = parameters[0].split("=");
-	  alert(unescape(temp[1]));
-	 var id=0; 
-    $.post("http://dev.1callgroup.com/budgetmobile/news.php", {
-                id: id,
-            },
+         $('.loading_up').fadeIn('slow');
+    $.post("http://dev.1callgroup.com/budgetmobile/news.php", {},
             function(data) {
-				alert(data);
 			var content = $("#my-content");	
 		    content.html(data);
 		    ons.compile(content[0]);
-			$('.loading').fadeOut('slow');
+			$('.loading_up').fadeOut('slow');
             });
       }
     });
-
+   
+   var Budget = angular.module('myApp', ['onsen.directives']);
+   Budget.controller("newsController", function($scope) {
+    $scope.news = function(val){       
+       // alert("foo!");
+		$(location).attr('href',"view_news.html?newsId="+val);
+    }
+    $scope.main = function(){       
+       // alert("foo!");
+		$(location).attr('href',"index.html");
+    }
+});
 </script>  
 <body> 
-
-  <ons-navigator var="offers">
+  <ons-navigator var="news" ng-controller="newsController">
 
     <ons-page>
-    <ons-gesture-detector>
+  <ons-gesture-detector>
    <div id="hoge">
-       <ons-row>
-        <ons-col class="left"><img style="width:100%; margin-top:20px;" src="images/logo.png"></ons-col>
-        <ons-col><div  style="float:right; margin-top:15px;"><ons-toolbar-button style="background-color: #ED5505;  padding-top:4px; padding-bottom:4px; cursor:pointer;"   ng-click="offers.pushPage('index.html')"><span style="color:#FFF;"><ons-icon icon="home" size="1x"></ons-icon>  Home </span></ons-toolbar-button></div></ons-col>
-      </ons-row>
+     
+        <ons-toolbar>
+        <div class="left"><ons-back-button ng-click="main()">Back</ons-back-button></div>
+        <div class="center"><img style="width:100%; margin-top:10px;" src="images/logo.png"></div>
+        <div class="right"><ons-button class="myicon" modifier="light" ng-click="news.pushPage('menu.html', {animation: 'lift'})"><ons-icon icon="bars" size="1x"></ons-icon>
+        </ons-button></div>
+      </ons-toolbar>
         <div style="text-align: center; background:#00285F; color:#FFF; padding-top:4px; padding-bottom:4px;">
-         <ons-icon icon="gift" size="2x"></ons-icon> <span id="report-header">Special Offers</span>
+         <ons-icon icon="gift" size="1x"></ons-icon> <span id="report-header">Special Offers</span>
       </div>
-    <div class="loading"><ons-icon icon="spinner" spin="true"></ons-icon></div> 
+      <div class="loading_up">
+      <ons-row>
+       <ons-col class=""><ons-icon icon="spinner" spin="true"></ons-icon></ons-col>
+      </ons-row>  
+      </div>
+   
       <span id="my-content"></span> 
       </div>
     </ons-gesture-detector>
+    
+    
+    
      </ons-page>
-</ons-navigator>
+
+
+<ons-template id="menu.html">
+    <ons-page>
+      <ons-list>
+        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="truck" size="1x"></ons-icon>  Our Fleet</ons-list-item>
+        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"> <ons-icon icon="map-marker" size="1x"></ons-icon> Our Locations</ons-list-item>
+        <ons-list-item class="mylink" ng-click="navi.pushPage('offers.html')" modifier="chevron"><ons-icon icon="gift" size="1x"></ons-icon> Special Offers</ons-list-item>
+        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="book" size="1x"></ons-icon> Mobile Booking</ons-list-item>
+        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="credit-card" size="1x"></ons-icon> Gateway Program</ons-list-item>
+        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="bullhorn" size="1x"></ons-icon> News and Events</ons-list-item>
+        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="envelope" size="1x"></ons-icon> Lease Enquiry</ons-list-item>
+        <ons-list-item class="mylink" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="phone" size="1x"></ons-icon> Contact Us</ons-list-item>
+      </ons-list>
+
+      <p style="text-align: center">
+        <ons-button modifier=""
+          ng-click="offers.popPage()">
+          Close
+        </ons-button>
+      </p>
+
+    </ons-page>
+  </ons-template>
+  </ons-navigator>
 </body>
 
 </html>

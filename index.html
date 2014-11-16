@@ -17,9 +17,9 @@
 
    Budget.controller("indexController", function($scope) {
 
-    $scope.foo = function(){       
-        alert("foo!");
-		$(location).attr('href',"news.html?news=1");;
+    $scope.allnews = function(){       
+       // alert("foo!");
+		$(location).attr('href',"news.html");;
     }
 
 });
@@ -85,7 +85,7 @@
         <ons-col class="icon-btn" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="credit-card" size="2x"></ons-icon><div> Gateway Program</div></ons-col>
       </ons-row>   
       <ons-row>   
-        <ons-col  class="icon-btn" ng-click="navi.pushPage('news.html')" modifier="chevron"><ons-icon icon="bullhorn" size="2x"></ons-icon> <div>News and Events</div></ons-col>  
+        <ons-col  class="icon-btn" ng-click="allnews()" modifier="chevron"><ons-icon icon="bullhorn" size="2x"></ons-icon> <div>News and Events</div></ons-col>  
         <ons-col  class="icon-btn" ng-click="navi.pushPage('example1.html')" modifier="chevron"><ons-icon icon="envelope" size="2x"></ons-icon> <div>Lease Enquiry</div></ons-col>
       </ons-row>   
       <ons-row>    

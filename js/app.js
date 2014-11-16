@@ -1,1 +1,1 @@
-angular.module('myApp', [ 'onsen.directives']);
+angular.module('myApp', [ 'onsen.directives','google-maps']);
