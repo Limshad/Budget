@@ -80,11 +80,11 @@
   });
 
     var eventName = 
-      'drag dragleft dragright dragup dragdown hold release swipe swipeleft swiperight ' +
-      'swipeup swipedown tap doubletap touch transform pinch pinchin pinchout rotate';
+      'drag dragleft dragright dragup dragdown hold release swipe swipeleft swiperight swipeup swipedown tap doubletap touch transform pinch pinchin pinchout rotate';
 
     $(document).on(eventName, '#hoge', function(event) {
-      if (event.type === 'swipedown') {
+		 
+      if (event.type == "swipedown") {
          $('.loading_up').fadeIn('slow');
     $.post("http://dev.1callgroup.com/budgetmobile/news.php", {},
             function(data) {
@@ -112,15 +112,16 @@
   <ons-navigator var="news" ng-controller="newsController">
 
     <ons-page>
-  <ons-gesture-detector>
-   <div id="hoge">
-     
-        <ons-toolbar>
+    <ons-toolbar>
         <div class="left"><ons-back-button ng-click="main()">Back</ons-back-button></div>
-        <div class="center"><img style="width:100%; margin-top:10px;" src="images/logo.png"></div>
+        <div class="center"><img style="height:100%;margin-left:-20px;" src="images/logo.png"></div>
         <div class="right"><ons-button class="myicon" modifier="light" ng-click="news.pushPage('menu.html', {animation: 'lift'})"><ons-icon icon="bars" size="1x"></ons-icon>
         </ons-button></div>
       </ons-toolbar>
+  <ons-gesture-detector>
+   <div id="hoge" style="height:100%">
+     
+        
         <div style="text-align: center; background:#00285F; color:#FFF; padding-top:4px; padding-bottom:4px;">
          <ons-icon icon="gift" size="1x"></ons-icon> <span id="report-header">Special Offers</span>
       </div>
@@ -133,8 +134,7 @@
       <span id="my-content"></span> 
       </div>
     </ons-gesture-detector>
-    
-    
+  
     
      </ons-page>
 
