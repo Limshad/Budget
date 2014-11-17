@@ -1,0 +1,26 @@
+<ons-page class="map" ng-controller="MapController" sliding-menu-ignore="true">
+    
+    <ons-toolbar>
+    <div class="left"><ons-back-button>Back</ons-back-button></div>
+    <div class="center">Our Locations</div>
+    <div class="right">
+    <ons-toolbar-button onclick="ons.slidingMenu.toggleMenu()">
+       <ons-icon icon="bars">
+    </ons-toolbar-button>
+    </div>
+    </ons-toolbar>
+
+    <ui-gmap-google-map center="map.center" refresh="true" zoom="map.zoom" draggable="true">
+
+        <ui-gmap-marker idkey="marker.id" ng-repeat="marker in map.markers" coords="marker" icon="marker.icon" click="onClick()">
+            <ui-gmap-window show="windowOptions" coords="marker" closeClick="closeClick">
+            {{marker.title}}<br/>
+            at {{marker}}
+            </ui-gmap-window>
+        </ui-gmap-marker>
+
+    </ui-gmap-google-map>
+   <ons-bottom-toolbar >
+       <ons-toolbar-button style="text-align:center;" ng-click="ons.navigator.pushPage('locations.html')">View as List</ons-toolbar-button>
+    </ons-bottom-toolbar>
+</ons-page>

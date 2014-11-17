@@ -1,0 +1,34 @@
+<ons-navigator title="Navigator" var="appNavigator">
+    
+    <ons-page ng-controller="HomeController">
+        
+      
+            
+           
+            <div class="text-centering">
+         <img  class="logo_home center" src="img/logo.png">
+           </div> 
+             
+        
+        <ons-scroller>
+            <section class="home-grid">
+                <div class="grid-menu">
+                    <div class="centering-and-alignment" ng-repeat="row in items | partition:2">
+                      <div class="grid-menu-item list__item list__item--tappable" ng-repeat="item in row" ng-click="showDetail(($parent.$index*row.length)+$index);">
+                        <ons-icon icon="{{item.icon}}"></ons-icon>
+                        <div class="grid-menu-item-label">{{item.title}}</div>
+                      </div>
+                    </div>
+                </div>
+    
+            </section>
+
+        </ons-scroller>
+       <ons-bottom-toolbar>
+      
+      <ons-toolbar-button style="float:left; " ng-click="">Privacy Policy</ons-toolbar-button>
+      <ons-toolbar-button style="float:right" ng-click="">Terms and Conditions</ons-toolbar-button>
+    </ons-bottom-toolbar> 
+    </ons-page>
+
+</ons-navigator>
