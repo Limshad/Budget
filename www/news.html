@@ -1,0 +1,31 @@
+<ons-page ng-controller="NewsController">
+    
+    <ons-toolbar>
+    <div class="left"><ons-back-button>Back</ons-back-button></div>
+    <div class="center">News & Events</div>
+    <div class="right">
+    <ons-toolbar-button onclick="ons.slidingMenu.toggleMenu()">
+       <ons-icon icon="bars">
+    </ons-toolbar-button>
+    </div>
+    </ons-toolbar>
+     <div class="loading_up"><ons-icon icon="spinner" spin="true"></ons-icon></div>
+    <section style="padding: 10px;">
+       <div ng-repeat="new in news">
+        <ons-row style="padding: 0 0 20px 0;">
+            <ons-col>
+                <h3 class="title" ng-bind-html="new.title" ng-click="showDetail($index)"></h3>
+                <div class="post-submitted">
+                        Posted {{new.time}}
+                  </div>
+                <a ng-click="showDetail($index)">
+                <img class="post-teaser-image" ng-src="{{new.picture}}" />
+                </a>
+ 
+
+            </ons-col>
+        </ons-row>
+        
+    </section>
+    
+</ons-page>

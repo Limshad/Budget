@@ -1,0 +1,23 @@
+<ons-page ng-controller="NewController">
+    
+    <ons-toolbar>
+    <div class="left"><ons-back-button>Back</ons-back-button></div>
+    <div class="center">News and Events</div>
+    <div class="right">
+    <ons-toolbar-button onclick="ons.slidingMenu.toggleMenu()">
+       <ons-icon icon="bars">
+    </ons-toolbar-button>
+    </div>
+    </ons-toolbar>
+
+    <img ng-src="{{item.picture}}" alt="{{item.title}}"/>
+
+    <section style="padding: 10px;">
+    <h2 class="title">{{item.title}}</h2>
+    <p>{{item.body}}</p>
+    <p class="tags"><ons-icon icon="pencil"> {{item.time}}</ons-icon>
+   
+    </p>
+    </section>
+    
+</ons-page>

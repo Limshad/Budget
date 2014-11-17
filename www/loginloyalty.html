@@ -1,0 +1,26 @@
+<ons-page sliding-menu-ignore="true">
+    
+    <ons-toolbar>
+     <div class="left"><ons-back-button ng-click="main()">Back</ons-back-button></div>
+   
+    <div class="center">Login</div>
+     <div class="right">
+    <ons-toolbar-button onclick="ons.slidingMenu.toggleMenu()">
+       <ons-icon icon="bars">
+    </ons-toolbar-button>
+    </div>
+    </ons-toolbar>
+
+    <div class="text-centering">
+      
+         <img  style="margin-top:20px;" class="center" src="img/loyalty.png">
+      
+    </div>
+    <input type="email" class="text-input--underbar" placeholder="Card Number" value="">
+    <input type="password" type="text" class="text-input--underbar" placeholder="Password" value="">
+    <br>
+    <button class="button login-button">Log in</button>
+    <br>
+    <button class="button--quiet forgot-password">Forgot password?</button>
+
+</ons-page>

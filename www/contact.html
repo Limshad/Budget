@@ -1,0 +1,27 @@
+<ons-page ng-controller="ContactController">
+    
+    <ons-toolbar>
+    <div class="left"><ons-back-button>Back</ons-back-button></div>
+    <div class="center">Contact</div>
+     <div class="right">
+    <ons-toolbar-button onclick="ons.slidingMenu.toggleMenu()">
+       <ons-icon icon="bars">
+    </ons-toolbar-button>
+    </div>
+    </ons-toolbar>
+
+    <section style="padding: 10px">
+        
+         <input type="text" class="text-input" placeholder="Name" ng-model="subject" style="width:100%; margin-bottom:10px;">
+          <input type="text" class="text-input" placeholder="Email" ng-model="subject" style="width:100%; margin-bottom:10px;">
+
+        <input type="text" class="text-input" placeholder="Mobile" ng-model="subject" style="width:100%; margin-bottom:10px;">
+
+        <textarea class="textarea" rows="10" placeholder="Message" ng-model="message" style="width:100%; margin-bottom:10px;"></textarea>
+
+        <ons-button modifier="large" ng-click="submitForm()">
+        Send Message
+        </ons-button>
+    </section>  
+
+</ons-page>
