@@ -5,11 +5,7 @@ sensationApp.factory('Data', function(){
     var data = {};
     
     data.items = [
-	    { 
-            title: 'About Us',
-            icon: 'user',
-            page: 'about.html'
-        },
+	    
          { 
             title: 'Our Fleet',
             icon: 'truck',
@@ -19,6 +15,11 @@ sensationApp.factory('Data', function(){
             title: 'Our Locations',
             icon: 'map-marker',
             page: 'map.html'
+        },
+		{ 
+            title: 'Booking',
+            icon: 'book',
+            page: 'booking.html'
         },
 		{ 
             title: 'Special Offers',
@@ -61,15 +62,16 @@ sensationApp.factory('MenuData', function(){
             title: 'Home',
             icon: 'home',
             page: 'home.html'
-        },{ 
-            title: 'About Us',
-            icon: 'user',
-            page: 'about.html'
-        },
+        }, 
          { 
             title: 'Our Fleet',
             icon: 'truck',
             page: 'products.html'
+        },
+		{ 
+            title: 'Booking',
+            icon: 'book',
+            page: 'booking.html'
         },
 		{ 
             title: 'Our Locations',
